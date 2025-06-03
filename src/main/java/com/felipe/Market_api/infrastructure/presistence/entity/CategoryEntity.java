@@ -25,6 +25,8 @@ public class CategoryEntity {
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     private List<ProductEntity> products = new ArrayList<>();
 
+    // Getters and Setters
+
     public Integer getCategoryId() {
         return categoryId;
     }
