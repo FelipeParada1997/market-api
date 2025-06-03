@@ -6,19 +6,22 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "productos")
-public class Product {
+public class ProductEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto")
     private Integer productId;
 
+    @Column(name = "id_categoria")
+    private Integer categoryId;
+
     @Column(name = "nombre")
     private String name;
 
     @ManyToOne
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
-    private Category category;
+    private CategoryEntity category;
 
     @Column(name = "codigo_barras")
     private String barCode;
@@ -33,7 +36,7 @@ public class Product {
     private Boolean active;
 
 
-
+    // Getters y setters...
 
 
     public Integer getProductId() {
@@ -42,6 +45,22 @@ public class Product {
 
     public void setProductId(Integer productId) {
         this.productId = productId;
+    }
+
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public CategoryEntity getCategory() {
+        return category;
+    }
+
+    public void setCategory(CategoryEntity category) {
+        this.category = category;
     }
 
     public String getName() {
@@ -84,3 +103,7 @@ public class Product {
         this.active = active;
     }
 }
+
+
+
+
