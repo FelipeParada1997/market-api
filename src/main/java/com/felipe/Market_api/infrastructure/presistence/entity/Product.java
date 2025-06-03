@@ -2,7 +2,7 @@ package com.felipe.Market_api.infrastructure.presistence.entity;
 
 import jakarta.persistence.*;
 
-import javax.annotation.processing.Generated;
+
 
 @Entity
 @Table(name = "productos")
@@ -16,8 +16,9 @@ public class Product {
     @Column(name = "nombre")
     private String name;
 
-    @Column(name = "categoria_id")
-    private Integer categoryId;
+    @ManyToOne
+    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
+    private Category category;
 
     @Column(name = "codigo_barras")
     private String barCode;
@@ -49,14 +50,6 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getCategoryId() {
-        return categoryId;
-    }
-
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
     }
 
     public String getBarCode() {
