@@ -2,6 +2,7 @@ package com.felipe.Market_api.domain.repository;
 
 import com.felipe.Market_api.domain.model.Category;
 
+
 import java.util.List;
 
 public interface CategoryRespository {
@@ -17,5 +18,6 @@ public interface CategoryRespository {
     Category updateCategoryName(Integer id, String newName);
     List<Category> getCategoriesSortedByName();
     Long countCategories();
-
+    List<Category> findAllWithProducts();
+    void toggleCategoryStatus(Integer id);
 }
