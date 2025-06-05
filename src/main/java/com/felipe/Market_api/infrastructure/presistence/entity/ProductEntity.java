@@ -6,12 +6,8 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "productos")
-public class ProductEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_producto")
-    private Integer productId;
+@AttributeOverride(name = "id", column = @Column(name = "id_producto"))
+public class ProductEntity extends BaseEntity {
 
     @Column(name = "id_categoria")
     private Integer categoryId;
@@ -38,14 +34,6 @@ public class ProductEntity {
 
     // Getters y setters...
 
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
 
     public Integer getCategoryId() {
         return categoryId;

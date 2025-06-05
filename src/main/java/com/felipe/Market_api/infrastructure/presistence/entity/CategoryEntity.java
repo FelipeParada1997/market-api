@@ -6,12 +6,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "categorias")
-public class CategoryEntity {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_categoria")
-    private Integer categoryId;
+@AttributeOverride(name = "id", column = @Column(name = "id_categoria"))
+public class CategoryEntity extends BaseEntity {
 
     @Column(name = "descripcion", unique = true, nullable = false)
     private String name;
@@ -27,13 +23,7 @@ public class CategoryEntity {
 
     // Getters and Setters
 
-    public Integer getCategoryId() {
-        return categoryId;
-    }
 
-    public void setCategoryId(Integer categoryId) {
-        this.categoryId = categoryId;
-    }
 
     public String getName() {
         return name;
