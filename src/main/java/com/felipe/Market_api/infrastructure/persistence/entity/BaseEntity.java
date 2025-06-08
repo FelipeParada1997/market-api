@@ -1,4 +1,4 @@
-package com.felipe.Market_api.infrastructure.presistence.entity;
+package com.felipe.Market_api.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -118,6 +118,14 @@ public abstract class BaseEntity {
      */
     public LocalDateTime getCreatedAt() {
         return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     /**

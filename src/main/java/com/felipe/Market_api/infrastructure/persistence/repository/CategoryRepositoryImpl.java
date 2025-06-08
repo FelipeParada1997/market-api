@@ -1,10 +1,13 @@
-package com.felipe.Market_api.infrastructure.presistence.repository;
+package com.felipe.Market_api.infrastructure.persistence.repository;
 
 import com.felipe.Market_api.domain.model.Category;
 import com.felipe.Market_api.domain.repository.CategoryRespository;
+import com.felipe.Market_api.infrastructure.persistence.entity.CategoryEntity;
+import com.felipe.Market_api.infrastructure.persistence.mapper.CategoryMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Implementación de {@link CategoryRespository} que maneja la persistencia de categorías
@@ -15,13 +18,22 @@ public class CategoryRepositoryImpl implements CategoryRespository {
     @Autowired
     private CategoryJpaRepository categoryJpaRepository;
 
+    @Autowired
+    private CategoryMapper categoryMapper;
+
     /**
      * Obtiene todas las categorías con sus productos relacionados.
      * @return Lista de categorías con sus productos.
      */
     @Override
-    public List<Category> findAllWithProducts() {
+    public List<Category> findAllCategoryWithProducts() {
         return null;
+    }
+
+    public List<Category> findAllCategories() {
+        return categoryJpaRepository.findAll().stream()
+                .map(categoryMapper::toCategory)
+                .toList();
     }
 
     /**
@@ -33,12 +45,12 @@ public class CategoryRepositoryImpl implements CategoryRespository {
     }
 
     /**
-     * Obtiene todas las categorías existentes.
-     * @return Lista de todas las categorías
+     * Obtiene una categoría existente con todos sus productos.
+     * @return Lista de los productos con esa categoria.
      */
     @Override
-    public List<Category> getAllCategories() {
-        return List.of();
+    public Optional<Category> getByCategoryAndProducts(Integer id) {
+        return null;
     }
 
     /**
@@ -57,8 +69,9 @@ public class CategoryRepositoryImpl implements CategoryRespository {
      * @return La categoría guardada con su ID asignado
      */
     @Override
-    public Category saveCategory(Category category) {
-        return null;
+    public CategoryEntity saveCategory(Category category) {
+        CategoryEntity categoryEntity = categoryMapper.toCategoryEntity(category);
+        return categoryJpaRepository.save(categoryEntity);
     }
 
     /**
@@ -67,6 +80,7 @@ public class CategoryRepositoryImpl implements CategoryRespository {
      */
     @Override
     public void deleteCategory(Integer categoryId) {
+        categoryJpaRepository.deleteById(categoryId);
     }
 
     /**

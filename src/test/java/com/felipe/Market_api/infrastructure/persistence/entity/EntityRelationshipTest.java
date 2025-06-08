@@ -1,7 +1,5 @@
 package com.felipe.Market_api.infrastructure.persistence.entity;
 
-import com.felipe.Market_api.infrastructure.presistence.entity.CategoryEntity;
-import com.felipe.Market_api.infrastructure.presistence.entity.ProductEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.*;

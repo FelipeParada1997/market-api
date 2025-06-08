@@ -1,4 +1,4 @@
-package com.felipe.Market_api.infrastructure.presistence.entity;
+package com.felipe.Market_api.infrastructure.persistence.entity;
 
 import jakarta.persistence.*;
 import java.util.ArrayList;
